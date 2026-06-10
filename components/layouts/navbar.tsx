@@ -40,11 +40,7 @@ export const Navbar = ({ pathname, items = NAV_ITEMS }: NavbarProps) => {
 
   return (
     <nav className='hidden md:flex items-center gap-3'>
-      <Tabs
-        key={activePath}
-        tabs={items as Tab[]}
-        // className='rounded-md'
-      />
+      <Tabs key={activePath} tabs={items as Tab[]} />
     </nav>
   )
 }
