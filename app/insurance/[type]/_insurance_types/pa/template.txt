@@ -1,0 +1,17 @@
+Activate Personal Accident Details
+
+Full Name: XXX
+Email Address: XXX
+Birth Date: XXX
+Home Address: XXX
+TIN Number: XXX
+Contact Number: XXX
+Occupation: XXX
+Designated Position: XXX
+Beneficiary Full Name: XXX
+Beneficiary Contact Number: XXX
+Beneficiary Relationship: XXX
+
+---
+Filename: Activate-Personal-Accident-Insurace-Details-For-{fullName}.txt)
+---

@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@import 'tw-animate-css';
+
 :root {
   color-scheme: light;
   --background: #f6f7fb;
@@ -76,4 +78,189 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* -----------------------------------------------------------------------------
+   View Transitions (React 19 <ViewTransition /> classes)
+   Usage:
+     <ViewTransition default="vt-default" enter="vt-enter" exit="vt-exit" update="vt-update" share="vt-share" />
+
+   React maps these class names into the View Transition pseudo-elements, so we
+   style them via selectors like:
+     ::view-transition-old(.vt-enter)
+     ::view-transition-new(.vt-enter)
+----------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*),
+  ::view-transition-old(.vt-default),
+  ::view-transition-new(.vt-default),
+  ::view-transition-old(.vt-enter),
+  ::view-transition-new(.vt-enter),
+  ::view-transition-old(.vt-exit),
+  ::view-transition-new(.vt-exit),
+  ::view-transition-old(.vt-update),
+  ::view-transition-new(.vt-update),
+  ::view-transition-old(.vt-avatar-update),
+  ::view-transition-new(.vt-avatar-update),
+  ::view-transition-old(.vt-share),
+  ::view-transition-new(.vt-share) {
+    animation: none !important;
+  }
+}
+
+/* Default: subtle crossfade + tiny scale */
+::view-transition-old(.vt-default) {
+  animation:
+    vt-fade-out 220ms cubic-bezier(0.2, 0, 0.2, 1) both,
+    vt-scale-down 220ms cubic-bezier(0.2, 0, 0.2, 1) both;
+}
+::view-transition-new(.vt-default) {
+  animation:
+    vt-fade-in 260ms cubic-bezier(0.2, 0, 0.2, 1) both,
+    vt-scale-up 260ms cubic-bezier(0.2, 0, 0.2, 1) both;
+}
+
+/* Enter: new slides up & fades in; old gently fades out */
+::view-transition-old(.vt-enter) {
+  animation: vt-fade-out 160ms cubic-bezier(0.2, 0, 0.2, 1) both;
+}
+::view-transition-new(.vt-enter) {
+  animation:
+    vt-fade-in 280ms cubic-bezier(0.2, 0, 0.2, 1) both,
+    vt-slide-in-up 320ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* Exit: old slides down & fades out; new gently fades in */
+::view-transition-old(.vt-exit) {
+  animation:
+    vt-fade-out 220ms cubic-bezier(0.2, 0, 0.2, 1) both,
+    vt-slide-out-down 260ms cubic-bezier(0.2, 0, 0.2, 1) both;
+}
+::view-transition-new(.vt-exit) {
+  animation: vt-fade-in 220ms cubic-bezier(0.2, 0, 0.2, 1) both;
+}
+
+/* Update: quick “settle” scale + crossfade */
+::view-transition-old(.vt-update) {
+  animation:
+    vt-fade-out 160ms cubic-bezier(0.2, 0, 0.2, 1) both,
+    vt-scale-down 180ms cubic-bezier(0.2, 0, 0.2, 1) both;
+}
+::view-transition-new(.vt-update) {
+  animation:
+    vt-fade-in 200ms cubic-bezier(0.2, 0, 0.2, 1) both,
+    vt-scale-up 220ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* Avatar update: slide up + crossfade (used by ProAvatar when photoURL changes) */
+::view-transition-old(.vt-avatar-update) {
+  animation:
+    vt-fade-out 160ms cubic-bezier(0.2, 0, 0.2, 1) both,
+    vt-avatar-slide-out-down 220ms cubic-bezier(0.2, 0, 0.2, 1) both;
+}
+::view-transition-new(.vt-avatar-update) {
+  animation:
+    vt-fade-in 220ms cubic-bezier(0.2, 0, 0.2, 1) both,
+    vt-avatar-slide-in-up 260ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* Share: keep the browser's geometry interpolation, add subtle polish */
+::view-transition-group(.vt-share) {
+  animation: vt-share-group 380ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+::view-transition-image-pair(.vt-share) {
+  isolation: isolate;
+}
+::view-transition-old(.vt-share) {
+  animation: vt-fade-out 180ms cubic-bezier(0.2, 0, 0.2, 1) both;
+  mix-blend-mode: normal;
+}
+::view-transition-new(.vt-share) {
+  animation: vt-fade-in 240ms cubic-bezier(0.2, 0, 0.2, 1) both;
+  mix-blend-mode: normal;
+}
+
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vt-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vt-scale-up {
+  from {
+    transform: scale(0.985);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes vt-scale-down {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.985);
+  }
+}
+
+@keyframes vt-slide-in-up {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes vt-slide-out-down {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes vt-avatar-slide-in-up {
+  from {
+    transform: translateY(24px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes vt-avatar-slide-out-down {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(24px);
+  }
+}
+
+@keyframes vt-share-group {
+  from {
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+  }
+  to {
+    filter: drop-shadow(0 18px 42px rgba(0, 0, 0, 0.18));
+  }
 }
