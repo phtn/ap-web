@@ -2,7 +2,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ThemeToggle } from '../theme-toggle'
 import { Button } from '../ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu'
 import { Navbar } from './navbar'
@@ -28,7 +27,6 @@ export const Topbar = () => {
         <Navbar pathname={pathname} />
 
         <div className='flex items-center gap-2'>
-          <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
@@ -36,7 +34,7 @@ export const Topbar = () => {
                   <div className='flex size-5 items-center justify-center rounded-full bg-primary/10'>
                     {/*<Icon name='flag-fill' className='size-3.5 text-primary' />*/}
                   </div>
-                  <span className='hidden text-sm sm:inline'>USER</span>
+                  <span className='hidden text-sm sm:inline'></span>
                   {/*<Icon name='chevron-down' className='size-2 opacity-60' />*/}
                 </Button>
               }

@@ -5,10 +5,10 @@ import { Icon } from '@/lib/icons'
 export default function Home() {
   return (
     <Container>
-      <div className='py-4 sm:py-6 lg:py-10'>
+      <div className='flex min-h-[calc(100dvh-4rem)] flex-col py-4 sm:py-6 lg:py-10'>
         <PersonalAccidentHeroCard />
-        <footer className='absolute w-[calc(122lvh)] bottom-1 text-xs text-foreground/80'>
-          <div className='h-12 mt-12 w-full flex iems-center justify-between font-display font-light text-xs'>
+        <footer className='mt-auto pt-10 text-xs text-foreground/80'>
+          <div className='mt-12 flex h-12 w-full items-center justify-between font-display text-xs font-light'>
             <div className='flex items-center justify-start w-full space-x-2'>
               <Icon name='ap' className='size-4 text-[#0200A1]/70' />
               <span>&copy; {new Date().getFullYear()}</span>

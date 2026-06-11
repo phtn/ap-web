@@ -6,14 +6,13 @@ export const themeInitScript = `
 (() => {
   const storageKey = ${JSON.stringify(THEME_STORAGE_KEY)}
   const root = document.documentElement
-  const media = window.matchMedia('(prefers-color-scheme: dark)')
   let stored = null
 
   try {
     stored = localStorage.getItem(storageKey)
   } catch {}
 
-  const theme = stored === 'light' || stored === 'dark' ? stored : media.matches ? 'dark' : 'light'
+  const theme = stored === 'light' || stored === 'dark' ? stored : 'light'
 
   root.dataset.theme = theme
   root.classList.toggle('dark', theme === 'dark')

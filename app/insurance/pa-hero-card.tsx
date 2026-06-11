@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export function PersonalAccidentHeroCard() {
   return (
-    <section className='relative overflow-hidden rounded-4xl border border-border/80 bg-card text-card-foreground shadow-[0_24px_80px_-36px_rgba(15,23,42,0.55)] 2xl:max-h-[calc(75lvh)]'>
+    <section className='relative overflow-hidden rounded-4xl border border-border/80 bg-card text-card-foreground shadow-[0_24px_80px_-36px_rgba(15,23,42,0.55)] 2xl:max-h-[calc(77lvh)]'>
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.16),transparent_38%),radial-gradient(circle_at_bottom_left,rgba(96,165,250,0.12),transparent_34%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(96,165,250,0.14),transparent_38%),radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.1),transparent_34%)]' />
       <div className='relative grid gap-0 lg:grid-cols-[1.05fr_0.95fr]'>
         <div className='space-y-4 px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12'>
@@ -86,7 +86,15 @@ export function PersonalAccidentHeroCard() {
 
           <div className='mt-6 grid gap-0'>
             <Benefits />
-            {/*{coverageItems.map((item, index) => (
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{
+  /*{coverageItems.map((item, index) => (
               <article
                 key={item.title}
                 className='group border border-b-0 border-border/70 bg-card/80 p-4 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md'>
@@ -100,10 +108,5 @@ export function PersonalAccidentHeroCard() {
                   </div>
                 </div>
               </article>
-            ))}*/}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
+            ))}*/
 }

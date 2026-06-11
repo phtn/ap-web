@@ -5,9 +5,9 @@ import { InsuranceProviders } from './providers'
 export default function InsuranceLayout({ children }: { children: ReactNode }) {
   return (
     <InsuranceProviders>
-      <div className='min-h-screen bg-background'>
+      <div className='min-h-dvh bg-background flex flex-col'>
         <Topbar />
-        <main>{children}</main>
+        <main className='flex-1'>{children}</main>
       </div>
     </InsuranceProviders>
   )
